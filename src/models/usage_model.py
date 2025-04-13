@@ -1,10 +1,8 @@
-from typing import List
 from pydantic import BaseModel
 from sqlalchemy import Column, Integer, String
 from sqlalchemy.orm import relationship
 
-from src.models.contracts_model import ContractsModel
-from src.shared.declarative_basemodel import Base
+from src.shared.declarative_base import Base
 
 
 # {'resource_type': 'storage', 'tenant': 'tenant-001', 'value': '1536', 'resource_name': 'memory'}
@@ -25,4 +23,3 @@ class Usage(BaseModel):
     tenant: str
     value: str
     resource_name: str
-    contract: List[ContractsModel] = []

@@ -1,8 +1,7 @@
 from pydantic import BaseModel
 from sqlalchemy import Column, Integer, String, ForeignKey
 from sqlalchemy.orm import relationship
-from src.shared.declarative_basemodel import Base
-from .contracts_model import ContractsModel
+from src.shared.declarative_base import Base
 
 
 class TenantsModel(Base):
@@ -19,4 +18,3 @@ class TenantSchema(BaseModel):
     id: int
     name: str
     contract_id: int
-    contracts: list[ContractsModel] = []

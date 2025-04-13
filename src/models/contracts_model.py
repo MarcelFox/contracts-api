@@ -1,7 +1,7 @@
 from sqlalchemy import Column, Integer, String, ForeignKey
 from sqlalchemy.orm import relationship
 from pydantic import BaseModel
-from src.shared.declarative_basemodel import Base
+from src.shared.declarative_base import Base
 
 class ContractsModel(Base):
     __tablename__ = 'contracts'
