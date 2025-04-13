@@ -16,8 +16,9 @@ def read_root():
 @app.post("/")
 async def say_hello(request: Request):
     data = await request.json()
-    name = data.get("name", "World")
-    return {"message": f"hello world {name}"}
+    # {'resource_type': 'storage', 'tenant': 'tenant-001', 'value': '1536', 'resource_name': 'memory'}
+    print(data)
+    return data
 
 
 if __name__ == "__main__":
