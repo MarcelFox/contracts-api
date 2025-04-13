@@ -2,4 +2,4 @@ run:
 	python main.py
 
 run\:docker:
-	docker compose up
+	docker compose up --build
