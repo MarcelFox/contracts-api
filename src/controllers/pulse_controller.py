@@ -1,8 +1,8 @@
 import json
 
-from src.shared.controller_class import Controller
-from src.schema.pulse_schema import PulseSchema
 from src.repositories.usage_repository import UsageRepository
+from src.schema.pulse_schema import PulseSchema
+from src.shared.controller_class import Controller
 
 
 class PulseController(Controller):
