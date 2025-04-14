@@ -1,7 +1,9 @@
 from pydantic import BaseModel
+from typing import Optional
 
 class UsageSchema(BaseModel):
-    resource_type: str
-    tenant: str
-    value: str
-    resource_name: str
+    total_usage: float
+    total_amount: float
+    invoice_value: float
+    paid: Optional[bool] = None
+    info: Optional[str] = None
