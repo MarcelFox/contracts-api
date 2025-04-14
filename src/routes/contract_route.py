@@ -6,6 +6,6 @@ from src.schema.contracts_schema import ContractSchema
 router = APIRouter()
 
 
-@router.post("/contract")
+@router.post("/")
 async def create_contract(contract: ContractSchema) -> ContractSchema | None:
     return await ContractController().create_contract(contract)
