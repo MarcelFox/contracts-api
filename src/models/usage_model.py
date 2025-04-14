@@ -12,7 +12,7 @@ class UsageModel(Base):
     total_usage = Column(Float, nullable=False)
     total_amount = Column(Float, nullable=False)
     invoice_value = Column(Float, nullable=False)
-    paid = Column(Boolean, nullable=False)
+    paid = Column(Boolean, nullable=False, default=False)
     info = Column(String, nullable=True)
     created_at = Column(DateTime, nullable=False, default=datetime.now())
     updated_at = Column(DateTime, nullable=False, default=datetime.now())
