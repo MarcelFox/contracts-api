@@ -1,21 +1,25 @@
-from sqlalchemy import Column, Integer, String, ForeignKey
+from sqlalchemy import Column, Integer, String, Float, DateTime, Enum
 from sqlalchemy.orm import relationship
-from pydantic import BaseModel
 from src.shared.declarative_base import Base
+from datetime import datetime
+
+from src.shared.enums import SkuEnum
 
 class ContractsModel(Base):
-    __tablename__ = 'contracts'
+    __tablename__ = "contracts"
 
     id = Column(Integer, primary_key=True, index=True, autoincrement=True)
-    tenant_id = Column(Integer, ForeignKey('tenants.id'), nullable=False)
-    usage_id = Column(Integer, ForeignKey('usage.id'), nullable=True)
-    name = Column(String, nullable=False)
+    sku = Column(Enum(SkuEnum, name="sku_enum"), nullable=False)
+    rate = Column(Float, nullable=False)
+    unit = Column(String, nullable=False)
+    price = Column(Float, nullable=False)
+    effective_date = Column(DateTime, nullable=False)
+    created_at = Column(DateTime, nullable=False, default=datetime.now())
+    updated_at = Column(DateTime, nullable=False, default=datetime.now())
 
-    tenants = relationship("TenantsModel", back_populates="contracts")
-    usage = relationship("UsageModel", back_populates="contracts")
-
-class ContractModel(BaseModel):
-    id: int
-    tenant_id: int
-    usage_id: int | None
-    name: str
+    tenant = relationship(
+        "TenantsModel",
+        back_populates="contract",
+        cascade="all, delete-orphan",
+        lazy="joined",
+    )
