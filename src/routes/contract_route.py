@@ -5,6 +5,9 @@ from src.schema.contracts_schema import ContractSchema, ContractResponseSchema
 
 router = APIRouter()
 
+@router.get("/{id}")
+async def get_contract(id: int) -> ContractResponseSchema | None:
+    return await ContractController().get_contract(contract_id=id)
 
 @router.post("/")
 async def create_contract(contract: ContractSchema) -> ContractResponseSchema:
