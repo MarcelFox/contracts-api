@@ -60,7 +60,8 @@ class Repository(AbstractRepository[T]):
                 raise ValueError(f"Entity with ID {id} not found in {self.model.__tablename__}")
 
             for key, value in data.items():
-                setattr(entity, key, value)
+                if key != "id":
+                    setattr(entity, key, value)
 
             entity = await session.merge(entity)
             await session.commit()
