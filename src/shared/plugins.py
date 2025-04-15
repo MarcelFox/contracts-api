@@ -23,10 +23,13 @@ def load_routes_plugin(app: FastAPI):
 
         try:
             module = importlib.import_module(module_name)
-            if hasattr(module, "router"):
-                logger.info(f"Loading routes from module '{module_name}'")
-                app.include_router(module.router, prefix=prefix, tags=[prefix])
-            else:
-                logger.warn(f"Module {module_name} does not have a 'router' attribute.")
+            try:
+                if hasattr(module, "router"):
+                    logger.info(f"Loading routes from module '{module_name}'")
+                    app.include_router(module.router, prefix=prefix, tags=[prefix])
+                else:
+                    logger.warn(f"Module {module_name} does not have a 'router' attribute.")
+            except Exception as e:
+                logger.error(f"Error loading routes from module '{module_name}': {e}")
         except ModuleNotFoundError:
             logger.error(f"Module {module_name} not found.")
