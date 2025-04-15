@@ -2,6 +2,7 @@
 
 <br />
 
+## Health Check
 ### `GET /`
 **Summary:** Health Check
 **Response:**
@@ -11,6 +12,7 @@
 
 <br />
 
+## Tenant
 ### `GET /tenant/{tenant_id}`
 **Summary:** Get Tenant
 **Path Parameters:**
@@ -54,6 +56,7 @@
 
 <br />
 
+## Pulse
 ### `POST /pulse/`
 **Summary:** Save Pulse
 **Request Body:** `PulseSchema`
@@ -65,6 +68,7 @@
 
 <br />
 
+## Usage
 ### `GET /usage/{usage_id}`
 **Summary:** Get Usage
 **Path Parameters:**
@@ -107,6 +111,7 @@
 
 <br />
 
+## Contract
 ### `GET /contract/{contract_id}`
 **Summary:** Get Contract
 **Query Parameters:**
