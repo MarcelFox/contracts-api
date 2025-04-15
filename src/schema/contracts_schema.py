@@ -11,7 +11,7 @@ class ContractSchema(BaseModel):
     id: Optional[int] = None
     sku: SkuEnum
     rate: float
-    unit: str
+    unit: float
     price: float
     usage_id: Optional[int] = None
     effective_date: datetime
@@ -27,7 +27,7 @@ class ContractResponseSchema(BaseModel):
     id: int
     sku: SkuEnum
     rate: float
-    unit: str
+    unit: float
     price: float
     effective_date: datetime
     usage: UsageSchema
