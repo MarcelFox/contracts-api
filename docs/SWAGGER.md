@@ -156,8 +156,6 @@
 
 ## Schemas
 
-<br />
-
 ### HealthResponse
 - `message`: string
 
@@ -234,3 +232,5 @@
 - `loc`: list of strings or integers
 - `msg`: string
 - `type`: string
+
+[Return to README](../README.md)
