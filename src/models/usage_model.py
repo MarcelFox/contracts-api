@@ -17,8 +17,8 @@ class UsageModel(Base):
     created_at = Column(DateTime, nullable=False, default=datetime.now())
     updated_at = Column(DateTime, nullable=False, default=datetime.now())
 
-    tenant = relationship(
-        "TenantsModel",
+    contract = relationship(
+        "ContractsModel",
         back_populates="usage",
         cascade="all, delete-orphan",
         lazy="joined",

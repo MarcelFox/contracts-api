@@ -1,4 +1,4 @@
-from sqlalchemy import Column, Integer, String, Float, DateTime, Enum
+from sqlalchemy import Column, Integer, String, Float, DateTime, Enum, ForeignKey
 from sqlalchemy.orm import relationship
 from src.shared.declarative_base import Base
 from datetime import datetime
@@ -14,6 +14,7 @@ class ContractsModel(Base):
     unit = Column(String, nullable=False)
     price = Column(Float, nullable=False)
     effective_date = Column(DateTime, nullable=False)
+    usage_id = Column(Integer, ForeignKey("usage.id"), nullable=False)
     created_at = Column(DateTime, nullable=False, default=datetime.now())
     updated_at = Column(DateTime, nullable=False, default=datetime.now())
 
@@ -21,5 +22,11 @@ class ContractsModel(Base):
         "TenantsModel",
         back_populates="contract",
         cascade="all, delete-orphan",
+        lazy="joined",
+    )
+
+    usage = relationship(
+        "UsageModel",
+        back_populates="contract",
         lazy="joined",
     )
