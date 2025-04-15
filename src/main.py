@@ -4,6 +4,7 @@ from dotenv import load_dotenv
 from fastapi import FastAPI
 from pydantic import BaseModel
 
+from src.shared.config import swagger_config
 from src.shared.plugins import load_routes_plugin
 
 
@@ -13,7 +14,7 @@ def create_app() -> FastAPI:
     Returns:
         FastAPI: Server Instance.
     """
-    app = FastAPI()
+    app = FastAPI(**swagger_config)
     load_dotenv()
 
     class HealthResponse(BaseModel):
