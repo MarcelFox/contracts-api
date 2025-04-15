@@ -35,3 +35,10 @@ class ContractController(Controller):
         }
         updated_contract = await self.contract_repository.update(id=contract_id, data=merge_data)
         return ContractResponseSchema.from_orm(updated_contract)
+
+    async def delete_contract(self, contract_id: int) -> dict:
+        contract = await self.contract_repository.find(data={"id": contract_id})
+        if not contract:
+            raise ValueError("Contract not found")
+        await self.contract_repository.delete(id=contract_id)
+        return {"message": f"Contract with id {contract_id} deleted successfully"}
