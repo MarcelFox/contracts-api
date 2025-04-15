@@ -5,3 +5,7 @@ class PulseSchema(BaseModel):
     product_sku: str
     used_amount: float
     use_unit: str
+
+    class Config:
+        orm_mode = True
+        from_attributes = True
