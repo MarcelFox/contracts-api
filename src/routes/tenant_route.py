@@ -17,5 +17,9 @@ async def create_tenant(tenant: TenantSchema) -> TenantSchema:
 
 
 @router.put("/{tenant_id}")
-async def update_tenant(tenant_id: int, tenant: TenantSchema) -> TenantSchema | None:
-    return await TenantController().update_tenant(tenant_id, tenant)
+async def update_tenant(tenant_id: int, tenant_data: TenantSchema) -> TenantSchema | None:
+    return await TenantController().update_tenant(tenant_id, tenant_data)
+
+@router.delete("/{tenant_id}")
+async def delete_tenant(tenant_id: int) -> dict:
+    return await TenantController().delete_tenant(tenant_id)

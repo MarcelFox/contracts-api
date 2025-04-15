@@ -33,3 +33,11 @@ class TenantController(Controller):
         }
         updated_tenant = await self.tenant_repository.update(tenant_id, merge_data)
         return TenantSchema.from_orm(updated_tenant)
+
+    async def delete_tenant(self, tenant_id: int) -> dict:
+        self.logger.info(f"Deleting tenant with id: {tenant_id}")
+        tenant = await self.tenant_repository.find({"id": tenant_id})
+        if not tenant:
+            raise ValueError(f"Tenant with id {tenant_id} not found")
+        await self.tenant_repository.delete(tenant_id)
+        return {"message": f"Tenant with id {tenant_id} deleted successfully"}
