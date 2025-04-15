@@ -27,7 +27,7 @@ class Repository(AbstractRepository[T]):
         )
         self.logger = logger
 
-    async def insert(self, data: dict) -> T | None:
+    async def insert(self, data: dict) -> T:
         async with self.SessionLocal() as session:
             async with session.begin():
                 logger.info(f"Will insert {data} into {self.model.__tablename__}")
