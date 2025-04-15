@@ -1,5 +1,7 @@
 ## Swagger
 
+Take a look at how authentication works on [TOKEN ROUTES](./TOKEN_ROUTES)
+
 <br />
 
 ## Health Check
