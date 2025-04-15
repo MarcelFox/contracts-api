@@ -6,6 +6,16 @@ from src.schema.usage_schema import UsageSchema
 router = APIRouter()
 
 
+@router.get("/{usage_id}")
+async def get_usage(usage_id: int) -> UsageSchema | None:
+    return await UsageController().get_usage(usage_id)
+
+
 @router.post("/")
-async def create_usage(usage: UsageSchema) -> UsageSchema | None:
+async def create_usage(usage: UsageSchema) -> UsageSchema:
     return await UsageController().create_usage(usage)
+
+
+@router.put("/{usage_id}")
+async def update_usage(usage_id: int, usage: UsageSchema) -> UsageSchema:
+    return await UsageController().update_usage(usage_id, usage)
