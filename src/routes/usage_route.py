@@ -17,5 +17,10 @@ async def create_usage(usage: UsageSchema) -> UsageSchema:
 
 
 @router.put("/{usage_id}")
-async def update_usage(usage_id: int, usage: UsageSchema) -> UsageSchema:
-    return await UsageController().update_usage(usage_id, usage)
+async def update_usage(usage_id: int, usage_data: UsageSchema) -> UsageSchema:
+    return await UsageController().update_usage(usage_id, usage_data)
+
+
+@router.delete("/{usage_id}")
+async def delete_usage(usage_id: int) -> dict:
+    return await UsageController().delete_usage(usage_id)

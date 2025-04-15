@@ -36,3 +36,10 @@ class UsageController(Controller):
             },
         )
         return UsageSchema.from_orm(updated_usage)
+
+    async def delete_usage(self, usage_id: int) -> dict:
+        usage = await self.usage_repository.find({"id": usage_id})
+        if not usage:
+            raise ValueError(f"Usage with id {usage_id} not found")
+        await self.usage_repository.delete(usage_id)
+        return {"message": f"Usage with id {usage_id} deleted successfully"}
