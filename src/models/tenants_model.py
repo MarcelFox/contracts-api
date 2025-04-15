@@ -14,17 +14,11 @@ class TenantsModel(Base):
     )
     email = Column(String, nullable=False)
     contract_id = Column(Integer, ForeignKey("contracts.id"), nullable=True)
-    usage_id = Column(Integer, ForeignKey("usage.id"), nullable=True)
     created_at = Column(DateTime, nullable=False, default=datetime.now())
     updated_at = Column(DateTime, nullable=False, default=datetime.now())
 
     contract = relationship(
         "ContractsModel",
-        back_populates="tenant",
-        lazy="joined",
-    )
-    usage = relationship(
-        "UsageModel",
         back_populates="tenant",
         lazy="joined",
     )
