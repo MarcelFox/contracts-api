@@ -15,6 +15,8 @@ class ContractSchema(BaseModel):
     price: float
     usage_id: Optional[int] = None
     effective_date: datetime
+    created_at: Optional[datetime] = None
+    updated_at: Optional[datetime] = None
 
     class Config:
         orm_mode = True
@@ -29,6 +31,8 @@ class ContractResponseSchema(BaseModel):
     price: float
     effective_date: datetime
     usage: UsageSchema
+    created_at: Optional[datetime] = None
+    updated_at: Optional[datetime] = None
 
     class Config:
         orm_mode = True
