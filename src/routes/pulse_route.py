@@ -9,8 +9,6 @@ router = APIRouter()
 
 
 @router.post("/")
-async def save_pulse(pulse: PulseSchema) -> UsageSchema | None:
+async def save_pulse(pulse: PulseSchema) -> UsageSchema:
     logger.info(f"Pulse -> {pulse}")
-    result = await PulseController().save_pulse(pulse)
-    # logger.info(f"Pulse saved with ID: {result}")
-    return result
+    return await PulseController().save_pulse(pulse)
