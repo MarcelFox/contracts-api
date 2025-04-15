@@ -1,8 +1,11 @@
 # Contracts API
 
 **Version**: 0.0.1
+
 **License**: [MIT](https://mit-license.org/)
+
 **Author**: [Marcel Fox](https://marcelfox.com)
+
 **Contact**: [marcelfox@live.com](mailto:marcelfox@live.com)
 
 <br />
