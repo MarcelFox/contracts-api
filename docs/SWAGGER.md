@@ -1,6 +1,6 @@
 ## Swagger
 
-Take a look at how authentication works on [TOKEN ROUTES](./TOKEN_ROUTES)
+Take a look at how authentication works on [token routes doc](TOKEN_ROUTES.md)
 
 <br />
 
