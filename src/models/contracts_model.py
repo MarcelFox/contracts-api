@@ -11,7 +11,7 @@ class ContractsModel(Base):
     id = Column(Integer, primary_key=True, index=True, autoincrement=True)
     sku = Column(Enum(SkuEnum, name="sku_enum"), nullable=False)
     rate = Column(Float, nullable=False)
-    unit = Column(String, nullable=False)
+    unit = Column(Float, nullable=False)
     price = Column(Float, nullable=False)
     effective_date = Column(DateTime, nullable=False)
     usage_id = Column(Integer, ForeignKey("usage.id"), nullable=False)
