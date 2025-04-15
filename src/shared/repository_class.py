@@ -54,14 +54,19 @@ class Repository(AbstractRepository[T]):
 
     async def update(self, id: int, data: dict) -> T:
         async with self.SessionLocal() as session:
-            async with session.begin():
-                entity = await self.find({"id": id})
-                if entity:
-                    for key, value in data.items():
-                        setattr(entity, key, value)
-                await session.commit()
-                await session.refresh(entity)
-                return entity
+            logger.info(f"Will update entity with ID {id} in {self.model.__tablename__}")
+            entity = await self.find({"id": id})
+            if not entity:
+                raise ValueError(f"Entity with ID {id} not found in {self.model.__tablename__}")
+
+            for key, value in data.items():
+                setattr(entity, key, value)
+
+            entity = await session.merge(entity)
+            await session.commit()
+            await session.refresh(entity)
+            return entity
+
 
     async def delete(self, id: int) -> bool:
         async with self.SessionLocal() as session:
