@@ -9,3 +9,8 @@ router = APIRouter()
 @router.post("/")
 async def create_contract(contract: ContractSchema) -> ContractResponseSchema:
     return await ContractController().create_contract(contract)
+
+
+@router.put("/{id}")
+async def update_contract(id: int, contract: ContractSchema) -> ContractResponseSchema | None:
+    return await ContractController().update_contract(contract_id=id, contract_data=contract)
